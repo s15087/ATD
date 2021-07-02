@@ -1,0 +1,12 @@
+HTTP/1.1 200 OK
+X-Riak-Vclock: a85hYGBgzGDKBVI8+xkWvv/6bZ4tRCiRMY+VIUUr8BZfFgA=
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Link: </buckets/s15087>; rel="up"
+Last-Modified: Wed, 30 Jun 2021 19:54:56 GMT
+ETag: "1qxS3C7VJLReZMQDZiwLlS"
+Date: Wed, 30 Jun 2021 19:55:33 GMT
+Content-Type: application/json
+Content-Length: 16
+
+{'cos': 'siema'}

@@ -1,0 +1,33 @@
+1.
+curl –XPUT -H "Content-Type: application/json" -d "{'name': 'Wojciech Smarzowski', 'nationality': 'Poland', 'age':'58', 'portfolio': '43'}"  http://localhost:8098/buckets/s15087/keys/Smarzowski
+curl –XPUT -H "Content-Type: application/json" -d "{'name': 'Roman Polanski', 'nationality': 'Poland', 'age':'87', 'portfolio': '21'}"  http://localhost:8098/buckets/s15087/keys/Polanski
+curl –XPUT -H "Content-Type: application/json" -d "{'name': 'Agnieszka Holland', 'nationality': 'Poland', 'age':'72', 'portfolio': '15'}"  http://localhost:8098/buckets/s15087/keys/Holland
+curl –XPUT -H "Content-Type: application/json" -d "{'name': 'Stanisław Bareja', 'nationality': 'Poland', 'age':'57', 'portfolio': '23'}"  http://localhost:8098/buckets/s15087/keys/Bareja
+curl –XPUT -H "Content-Type: application/json" -d "{'name': 'Juliusz Machulski', 'nationality': 'Poland', 'age':'66', 'portfolio': '8'}"  http://localhost:8098/buckets/s15087/keys/Machulski
+
+2.
+curl -i -XGET http://localhost:8098/buckets/s15087/keys/Sapkowski
+
+3.
+curl -i –XPUT -H "Content-Type: application/json" -d "{'name': 'Roman Polanski', 'nationality': 'Poland', 'age':'87', 'portfolio': '21', 'bestseller': 'Pianista'}" http://localhost:8098/buckets/s15087/keys/Polanski
+
+4.
+curl -i -XPUT -H "Content-Type: application/json" -d "{'name': 'Roman Polanski', 'nationality': 'Poland', 'age':'87', 'portfolio': '21'}" http://localhost:8098/buckets/s15087/keys/Polanski
+
+5.
+curl -i -XPUT -H "Content-Type: application/json" -d "{'name': 'Roman Polanski', 'nationality': 'Poland', 'age':'87', 'portfolio': '6'}" http://localhost:8098/buckets/s15087/keys/Polanski
+
+6.
+curl -i -XDELETE http://localhost:8098/buckets/s15087/keys/Machulski'
+
+7.
+curl -i -XGET http://localhost:8098/buckets/s15087/keys/Pianista
+
+8.
+curl -i -XPOST -H "Content-Type: application/json" -d "{'hello': 'world'}" http://localhost:8098/buckets/s15087/keys
+
+9.
+curl -i -XGET http://localhost:8098/buckets/s15087/keys/A2TyZTs1BcDKqvZsHait3V6loqQ
+
+10.
+curl -i -XDELETE http://localhost:8098/buckets/s15087/keys/A2TyZTs1BcDKqvZsHait3V6loqQ
