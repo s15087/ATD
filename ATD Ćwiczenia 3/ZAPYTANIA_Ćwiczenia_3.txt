@@ -1,0 +1,59 @@
+1.
+MATCH (movie:Movie)
+RETURN movie
+
+2.
+MATCH (person:Person {name: "Hugo Weaving"})-[:ACTED_IN]->(hugoWeavinsMovies)
+RETURN person, hugoWeavinsMovies
+
+3.
+MATCH (person:Person {name: "Hugo Weaving"})-[:ACTED_IN]->(hugoWeavinsMovies)<-[:DIRECTED]-(Director)
+RETURN person, hugoWeavinsMovies, Director
+
+4.
+MATCH (person:Person {name: "Hugo Weaving"})-[:ACTED_IN]->(movie:Movie)<-[:ACTED_IN]-(com:Person)
+RETURN movie, person, com
+
+5.
+MATCH (person:Person)-[:ACTED_IN]->(movie:Movie)<-[:ACTED_IN]-(person2:Person)-[:ACTED_IN]->(movie2:Movie)
+WHERE movie.title CONTAINS 'Matrix'
+RETURN movie2, person2
+
+6.
+MATCH (person:Person)-[:ACTED_IN]->(movie:Movie)
+RETURN person, COUNT(*) AS moviesActed
+
+7.
+MATCH (person:Person)-[:WROTE]->(movie:Movie)<-[:DIRECTED]-(person:Person)
+RETURN person, movie
+
+8.
+MATCH (person:Person {name: "Hugo Weaving"})-[:ACTED_IN]->(movie:Movie)<-[:ACTED_IN]-(person2:Person {name: "Keanu Reeves"})
+RETURN movie
+
+9.
+//---DODANIE FILMU---
+CREATE (CaptainAmerica:Movie {title: 'Capitian America: The First Avenger', relased:2021, tagline:'Steve Rogers, a rejected military soldier, transforms into Captain America after taking a dose of a "Super-Soldier serum". But being Captain America comes at a price as he attempts to take down a war monger and a terrorist organization'})
+CREATE (ChrisE:Person {name:'Chris Evan', born:1981})
+CREATE (HayleyA:Person {name:'Hayley Atwell', born:1982})
+CREATE (SebastianS:Person {name:'Sebastian Stan', born:1982})
+CREATE (TommyL:Person {name:'Tommy Lee Jones', born:1946})
+CREATE (DominicC:Person {name:'Dominic Cooper', born:1978})
+CREATE (ChristopherM:Person {name:'Christopher Markus', born:1970})
+CREATE (StephenM:Person {name:'Stephen McFeely', born:1969})
+CREATE (JoeJ:Person {name:'Joe Johnston', born:1950})
+CREATE
+(ChrisE)-[:ACTED_IN {roles:['Captain America / Steve Rogers']}]->(CaptainAmerica),
+(HayleyA)-[:ACTED_IN {roles:['Peggy Carter']}]->(CaptainAmerica),
+(SebastianS)-[:ACTED_IN {roles:['James Buchanan "Bucky" Barnes']}]->(CaptainAmerica),
+(TommyL)-[:ACTED_IN {roles:['Colonel Chester Phillips']}]->(CaptainAmerica),
+(HayleyA)-[:ACTED_IN {roles:['Peggy Carter']}]->(CaptainAmerica),
+(hugo:Person {name: "Hugo Weaving"})-[:ACTED_IN {roles:['Johann Schmidt / Red Skull']}]->(CaptainAmerica),
+(DominicC)-[:ACTED_IN {roles:['Howard Stark']}]->(CaptainAmerica),
+(JoeJ)-[:DIRECTED]->(CaptainAmerica),
+(ChristopherM)-[:WROTE]->(CaptainAmerica),
+(StephenM)-[:WROTE]->(CaptainAmerica)
+
+//---ODCZYTANIE FILMU---
+MATCH (movie:Movie {title: 'Capitian America: The First Avenger'})<-[*]-(person:Person)
+RETURN movie, person
