@@ -1,0 +1,8 @@
+var map = function(){
+	emit(this.job, 1)
+}
+
+	var reduce = function(){}
+
+db.people.mapReduce(map, reduce, {out: "Zadanie3MR"})
+printjson(db.Zadanie3MR.find().toArray())
